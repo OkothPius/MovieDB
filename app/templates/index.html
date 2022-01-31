@@ -1,14 +1,25 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    {% if title %}
-      <title>{{ title }}</title>
-    {% else %}
-      <title>Welcome to the best Movie Review website </title>
-    {% endif %}
-  </head>
-  <body>
-    <h3>Home</h3>
-  </body>
-</html>
+{% extends 'base.html' %}
+{% import 'macros.html' as macro %}
+
+{% block content %}
+  <h3>Home</h3>
+  <!-- Popular Movie Section -->
+  <h3>Popular Movies </h3>
+  <ul>
+      {{ macro.displayMovieList(popular)}}
+  </ul>
+
+
+  <!-- Upcoming Movie Section -->
+  <h3>Upcoming Movies </h3>
+  <ul>
+      {{ macro.displayMovieList(upcoming) }}
+  </ul>
+
+
+  <!-- Now showing Movie Section -->
+  <h3>Now showing Movies </h3>
+  <ul>
+      {{ macro.displayMovieList(now_playing) }}
+  </ul>
+{% endblock %}
