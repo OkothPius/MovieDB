@@ -18,7 +18,7 @@ def index():
                                             upcoming=upcoming_movie,
                                             now_playing=now_showing_movie)
 
-@app.route('/movies/<int:id>')
+@app.route('/movie/<int:id>')
 def movie(id: int):
     '''
     View movie page function that returns the movie details page and its data
