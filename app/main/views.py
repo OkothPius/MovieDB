@@ -1,13 +1,13 @@
 from flask import render_template
-from app import app
-from .request import get_movies, get_movie
-from .models import review
+from . import main
+from ..request import get_movies, get_movie
+from ..models import Review
 from .forms import ReviewForm
 
 Review = review.Review
 
 # Views
-@app.route('/')
+@main.route('/')
 def index():
     '''
     view root page function that returns the index page and its data
@@ -22,7 +22,7 @@ def index():
                                             upcoming=upcoming_movie,
                                             now_playing=now_showing_movie)
 
-@app.route('/movie/<int:id>')
+@main.route('/movie/<int:id>')
 def movie(id: int):
     '''
     View movie page function that returns the movie details page and its data
@@ -34,7 +34,7 @@ def movie(id: int):
     return render_template('movie.html', movie=movie, title=title, reviews=reviews)
 
 
-@app.route('/movie/review/new/<int:id>', methods=['GET','POST'])
+@main.route('/movie/review/new/<int:id>', methods=['GET','POST'])
 def new_review(id):
     form = ReviewForm()
     movie = get_movie(id)
@@ -44,7 +44,7 @@ def new_review(id):
         review = form.review.data
         new_review = Review(movie.id, title, movie.poster, review)
         new_review.save_review()
-        return redirect(url_for('movie', id = movie.id))
+        return redirect(url_for('main.movie', id = movie.id))
 
     title = f'{movie.title} review'
     return render_template('new_review.html', title=title, review_form=form, movie=movie)
