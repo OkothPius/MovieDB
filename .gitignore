@@ -77,7 +77,8 @@ instance/
 
 # Scrapy stuff:
 .scrapy
-
+.start.sh
+/start.sh
 # Sphinx documentation
 docs/_build/
 
