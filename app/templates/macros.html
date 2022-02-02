@@ -4,8 +4,7 @@
       <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 movie-card">
           <img src="{{ movie.poster }}" alt="{{ movie.title }} poster" class="img-responsive">
           <li class="text-center">
-              <a href="/movie/{{movie.id}}">
-                  {{ movie.title|truncate(10)}}</a>
+              <a href="/movie/{{movie.id}}">{{ movie.title|truncate(10) }}</a>
           </li>
       </div>
   {% endfor %}

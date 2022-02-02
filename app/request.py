@@ -14,9 +14,7 @@ def configure_request(app):
 
 
 def get_movies(category):
-    '''
-    Function that gets the json response to our url request
-    '''
+    ''' Function that gets the json response to our url request. '''
     get_movies_url = base_url.format(category, api_key) # api_url
 
     with urllib.request.urlopen(get_movies_url) as url:
@@ -54,15 +52,7 @@ def get_movie(id):
 
 
 def process_results(movie_list):
-    '''
-    Function  that processes the movie result and transform them to a list of Objects
-
-    Args:
-        movie_list: A list of dictionaries that contain movie details
-
-    Returns :
-        movie_results: A list of movie objects
-    '''
+    ''' Function processes the movie result transform them to a list of Objects. '''
     movie_results = []
     for movie_item in movie_list:
         id = movie_item.get('id')
