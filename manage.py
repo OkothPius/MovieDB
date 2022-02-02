@@ -1,5 +1,5 @@
 from app import create_app, db
-from app.models import User, Role
+from app.models import User, Role, Review
 # from flask.cli
 # import FlaskGroup
 
@@ -9,6 +9,7 @@ from flask_migrate import Migrate, MigrateCommand
 
 # Creating an app instance
 app = create_app('development')
+app = create_app('test')
 
 manager = Manager(app)
 migrate = Migrate(app,db)
